@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Upload, Activity } from 'lucide-react';
+import { Upload, Activity, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
@@ -8,6 +8,7 @@ import { useToast } from '@/components/ui/use-toast';
 const ImageUploader = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [prediction, setPrediction] = useState<string>("");
   const { toast } = useToast();
 
   const handleImageSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,6 +65,9 @@ const ImageUploader = () => {
       if (!response.ok) {
         throw new Error('Upload failed');
       }
+
+      const data = await response.json();
+      setPrediction(data.prediction || "No prediction available");
 
       toast({
         title: "Success",
@@ -127,9 +131,19 @@ const ImageUploader = () => {
           <Upload className="w-4 h-4 mr-2" />
           Upload Image
         </Button>
+
+        {prediction && (
+          <div className="mt-4 p-4 bg-sky-50 rounded-lg border border-sky-200">
+            <div className="flex items-center gap-2 text-sky-800">
+              <MessageSquare className="w-5 h-5" />
+              <p className="text-sm font-medium">{prediction}</p>
+            </div>
+          </div>
+        )}
       </Card>
     </div>
   );
 };
 
 export default ImageUploader;
+
