@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Upload, Image } from 'lucide-react';
+import { Upload, Lungs } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
@@ -79,12 +79,15 @@ const ImageUploader = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <Card className="w-full max-w-md p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-center text-gray-900">Image Upload</h1>
+    <div className="min-h-screen flex items-center justify-center bg-sky-50 p-4">
+      <Card className="w-full max-w-md p-6 space-y-6 bg-white shadow-lg border-2 border-sky-100">
+        <div className="flex items-center justify-center space-x-3">
+          <Lungs className="w-10 h-10 text-sky-600" />
+          <h1 className="text-3xl font-bold text-sky-800">Lungs-Di</h1>
+        </div>
         
         <div
-          className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-primary transition-colors"
+          className="border-2 border-dashed border-sky-300 rounded-lg p-8 text-center cursor-pointer hover:border-sky-500 transition-colors"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
           onClick={() => document.getElementById('fileInput')?.click()}
@@ -94,16 +97,16 @@ const ImageUploader = () => {
               <img
                 src={previewUrl}
                 alt="Preview"
-                className="max-h-48 mx-auto object-contain rounded-lg"
+                className="max-h-48 mx-auto object-contain rounded-lg shadow-md"
               />
-              <p className="text-sm text-gray-500">Click or drag to change image</p>
+              <p className="text-sm text-sky-600">Click or drag to change image</p>
             </div>
           ) : (
             <div className="space-y-4">
-              <Image className="w-12 h-12 mx-auto text-gray-400" />
+              <Lungs className="w-12 h-12 mx-auto text-sky-400" />
               <div className="space-y-2">
-                <p className="text-gray-600">Drag and drop your image here</p>
-                <p className="text-sm text-gray-500">or click to browse</p>
+                <p className="text-sky-700">Drag and drop your medical image here</p>
+                <p className="text-sm text-sky-500">or click to browse</p>
               </div>
             </div>
           )}
@@ -117,7 +120,7 @@ const ImageUploader = () => {
         </div>
 
         <Button
-          className="w-full"
+          className="w-full bg-sky-600 hover:bg-sky-700"
           onClick={handleUpload}
           disabled={!selectedImage}
         >
