@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Upload, Lungs } from 'lucide-react';
+import { Upload, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
@@ -82,7 +82,7 @@ const ImageUploader = () => {
     <div className="min-h-screen flex items-center justify-center bg-sky-50 p-4">
       <Card className="w-full max-w-md p-6 space-y-6 bg-white shadow-lg border-2 border-sky-100">
         <div className="flex items-center justify-center space-x-3">
-          <Lungs className="w-10 h-10 text-sky-600" />
+          <Activity className="w-10 h-10 text-sky-600" />
           <h1 className="text-3xl font-bold text-sky-800">Lungs-Di</h1>
         </div>
         
@@ -103,7 +103,7 @@ const ImageUploader = () => {
             </div>
           ) : (
             <div className="space-y-4">
-              <Lungs className="w-12 h-12 mx-auto text-sky-400" />
+              <Activity className="w-12 h-12 mx-auto text-sky-400" />
               <div className="space-y-2">
                 <p className="text-sky-700">Drag and drop your medical image here</p>
                 <p className="text-sm text-sky-500">or click to browse</p>
